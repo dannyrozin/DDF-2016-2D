@@ -8,14 +8,14 @@ import processing.pdf.*;
 boolean record = false;
 
 
-void setup(){
+void setup() {
   size(1000, 700);   
 
   fill(0);
   frameRate(2);
 }
 
-void draw(){
+void draw() {
   background(255);
 
   if (record == true) {
@@ -27,14 +27,10 @@ void draw(){
   for (int x=0; x<width; x+=50) {
     for (int y=0; y<height; y+=50) {
       int shapeSize = x/25;
-      switch ((int)random(2)) {
-      case 0: 
-          ellipse(x, y, shapeSize, shapeSize);
-        break;
-
-      case 1: 
+      if  ( random(2) < 1) {
+        ellipse(x, y, shapeSize, shapeSize);
+      } else {
         rect(x-shapeSize/2, y-shapeSize/2, shapeSize, shapeSize);
-        break;
       }
     }
   }

@@ -44,7 +44,7 @@ AudioInput in;
 
 void setup()
 {
-  size(512, 200, P3D);//// for me the DXF export doesn't work without specifying P3D
+  size(512, 200, P3D);        //// for me the DXF export doesn't work without specifying P3D
 
   minim = new Minim(this);
   minim.debugOn();

@@ -26,9 +26,10 @@ void setup() {
   XML xml = loadXML(url);                                                         // Load the XML document
 
   XML forecast[] = xml.getChildren("results/channel/item/yweather:forecast");     // place the elements into array
+  println(forecast);
   for (int i = 0; i< forecast.length; i++) {
     String thisForecast=  forecast[i].getString("text");                                    
-    if (thisForecast.contains("Showers")) shape(rainy, i*100, 0, 100, 100);
+    if (thisForecast.contains("Showers") || thisForecast.contains("Thunderstorms") || thisForecast.contains("Rain")) shape(rainy, i*100, 0, 100, 100);
     else if (thisForecast.equals("Sunny")) shape(sunny, i*100, 0, 100, 100);
     else if (thisForecast.contains("Cloudy")) shape(cloudy, i*100, 0, 100, 100);
     else if (thisForecast.contains("Breezy")) shape(breezy, i*100, 0, 100, 100);

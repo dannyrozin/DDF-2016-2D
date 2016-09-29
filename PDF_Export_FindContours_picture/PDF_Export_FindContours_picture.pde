@@ -35,9 +35,9 @@ void draw() {
                                
   contours = opencv.findContours();                             // tell opencv to find the contours and return as an array list
 
-  for (Contour thisContour : contours) {                           // visit all elements of the array list "contour" naming each one as "thisContour"
-    stroke(0);
+  for (Contour thisContour : contours) {                         // visit all elements of the array list "contour" naming each one as "thisContour"
+   // stroke(0);
     thisContour.draw();
   }
-  endRecord();
+  endRecord();                                                 // end ther PDF recording, you can call it even if you are not currently recording and it doesnt care
 }

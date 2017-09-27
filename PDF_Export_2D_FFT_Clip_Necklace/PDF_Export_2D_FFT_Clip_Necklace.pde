@@ -1,5 +1,5 @@
 /**  
-DDF 2016
+DDF 2017
 Exports PDF, press R to export . Exports rects and circles that can be used to make a necklace
 does an FFT analsis of a sound clip and average to 32 buckets
 based on example by Damien Di Fede. 

@@ -1,5 +1,5 @@
 /*
- DDF 2016
+ DDF 2017
  Get weather data as XML from Yahoo API , and draw icons according to 10 day forecast
  Press R to save as PDF
  */
@@ -30,7 +30,7 @@ void setup() {
   for (int i = 0; i< forecast.length; i++) {
     String thisForecast=  forecast[i].getString("text");                                    
     if (thisForecast.contains("Showers") || thisForecast.contains("Thunderstorms") || thisForecast.contains("Rain")) shape(rainy, i*100, 0, 100, 100);
-    else if (thisForecast.equals("Sunny")) shape(sunny, i*100, 0, 100, 100);
+    else if (thisForecast.contains("Sunny")) shape(sunny, i*100, 0, 100, 100);
     else if (thisForecast.contains("Cloudy")) shape(cloudy, i*100, 0, 100, 100);
     else if (thisForecast.contains("Breezy")) shape(breezy, i*100, 0, 100, 100);
     else shape(question, i*100, 0, 100, 100);

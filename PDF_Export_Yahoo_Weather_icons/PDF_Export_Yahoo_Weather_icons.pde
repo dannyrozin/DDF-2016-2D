@@ -1,5 +1,5 @@
 /*
- DDF 2017
+ DDF 2018
  Get weather data as XML from Yahoo API , and draw icons according to 10 day forecast
  Press R to save as PDF
  */

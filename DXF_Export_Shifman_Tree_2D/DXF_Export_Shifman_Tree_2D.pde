@@ -1,6 +1,6 @@
 /*
-DDF 2017
-Here I mutulated Dan's code to make  "fruit" in the end of the branches , 
+DDF 2018
+Here I mutilated Dan's code to make  "fruit" in the end of the branches , 
 just because for laser cutting and such, circles would be more usefull than lines...
 When you're happy , press R to export DXF
 

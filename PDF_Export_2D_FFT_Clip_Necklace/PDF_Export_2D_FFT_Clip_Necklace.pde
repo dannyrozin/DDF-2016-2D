@@ -1,5 +1,5 @@
 /**  
-DDF 2017
+DDF 2018
 Exports PDF, press R to export . Exports rects and circles that can be used to make a necklace
 does an FFT analsis of a sound clip and average to 32 buckets
 based on example by Damien Di Fede. 
@@ -56,7 +56,7 @@ void draw()
   {
     // draw a rectangle for each average, multiply the value by 10 so we can see it better
     rect(i*w+50, 100-fft.getAvg(i)*5, w-2, fft.getAvg(i)*10);
-    currentX+= fft.getAvg(i)*20+ 10;
+    currentX+= fft.getAvg(i)*40+ 10;
 
     ellipse(currentX, currentY, fft.getAvg(i)*20, fft.getAvg(i)*20);
     if (currentX> width-100) {

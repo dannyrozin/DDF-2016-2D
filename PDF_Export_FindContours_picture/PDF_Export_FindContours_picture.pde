@@ -20,8 +20,9 @@ void setup() {
 }
 
 void draw() {
-  background (0);
-  fill(255);
+  background (255);
+  noFill();  
+  //fill(255);
   if (mousePressed) {                                         // click mouse to start recording PDF
     beginRecord(PDF, "countour"+count++ +".pdf"); 
     noFill();                                                 // we want the PDF with outlines but no fill otherwise we will have double lines in VW or AI
@@ -32,7 +33,7 @@ void draw() {
   opencv.gray();                                               // turn our pic to grayscale
   opencv.blur(5);                                              // blur it to smooth the details
   opencv.threshold(mouseX);                                     // turn to b&w in a threshold of the mouseX
-                               
+  //image( opencv.getSnapshot(),0,0);                           
   contours = opencv.findContours();                             // tell opencv to find the contours and return as an array list
 
   for (Contour thisContour : contours) {                         // visit all elements of the array list "contour" naming each one as "thisContour"

@@ -1,5 +1,5 @@
 /*
-DDF 2018
+DDF 2019
  finds contours in a picture according to brightness and exports as PDF
  requires the OPENCV for Processing library installed
  move mouse to change the threshold

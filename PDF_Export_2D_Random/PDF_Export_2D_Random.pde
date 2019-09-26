@@ -1,27 +1,21 @@
-/* 
- DDF 2019
+/*  DDF 2019
  Creates a gradient made of random shapes
- Press R to Export PDF
- */
+ Press R to Export PDF  */
 
 import processing.pdf.*;
 boolean record = false;
 
-
 void setup() {
   size(1000, 700);   
-
   fill(0);
   frameRate(2);
 }
 
 void draw() {
   background(255);
-
   if (record == true) {
     beginRecord(PDF, "output.pdf");  // Start recording to the file
   }
-
 
   stroke(0);
   for (int x=0; x<width; x+=50) {

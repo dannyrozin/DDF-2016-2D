@@ -6,57 +6,47 @@ DDF 2019
 import processing.dxf.*;
 import processing.video.*;
 
-// Size of each cell in the grid
-int cellSize = 18;
-// Number of columns and rows in our system
 
-// Variable for capture device
-Capture video;
+int cellSize = 18;                                                      // Size of each cell in the grid
+
+
+
+Capture video;                                                            // Variable for capture device
 boolean record = false;
 
 void setup() {
-  size(640, 480, P3D);           // DXF like P3D
-  //set up columns and rows
-
-  colorMode(RGB, 255, 255, 255, 100);
-  rectMode(CENTER);
-
-  // Uses the default video input, see the reference if this causes an error
+  size(640, 480, P3D);                                                   // DXF likes P3D
   video = new Capture(this, width, height);
   video.start();
 }
 
 
 void draw() { 
-
   if (video.available()) {
     video.read();
-    video.loadPixels();
     background(255);
     fill(0);
-
     if (record == true) {
       beginRaw(DXF, "output.dxf");                                            // Start recording to the file
       noFill();                                                                 // we only want the outline
     }
-    // Begin loop for columns
-    for (int x = 0; x < width; x+= cellSize) {                                // Begin loop for rows
+    for (int x = 0; x < width; x+= cellSize) {                                // loop through pixels jumping "cellSize" on x and y
       for (int y = 0; y < height; y+=cellSize) { 
         color c= video.get(x, y );                                             // get pixel color for each x, y
-        float CircleSize = ((255-brightness(c)) / 255.0) * cellSize;              // get the brightness and invert , the ovals are black
-        ellipse(x + cellSize/2, y + cellSize/2, CircleSize, CircleSize);
+        float CircleSize= map(brightness(c), 0,255,  cellSize-1, 0);           // get the brightness and then map to 0 - cellSize
+        ellipse(x + cellSize/2, y + cellSize/2, CircleSize, CircleSize);       // draw a circle with size porportional to brightness
       }
     }
 
-    if (record == true) {
-      endRaw();
+    if (record == true) {                                                      // wer're done drawing, and we are curently recording
+      endRaw();                                                                // stop the recording to DXF
       println("recorded DXF");
-      record = false; // Stop recording to the file
+      record = false;                                                           // We only want to record once So we set "record" to false
     }
   }
 }
 void keyPressed() {
-  if (key == 'R' || key == 'r') { // Press R to save the file
+  if (key == 'R' || key == 'r') {                                              // Press R to save the file
     record = true;
   }
 }

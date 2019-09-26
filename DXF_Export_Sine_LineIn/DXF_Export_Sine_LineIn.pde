@@ -60,22 +60,17 @@ void draw()
   
   if (record == true) {
     beginRaw(DXF, "output.dxf"); // Start recording to the file
-  }
-  
-  // draw the waveforms
-  
-  for(int i = 0; i < in.bufferSize() - 2; i+=2)
-  {
+  } 
+  // draw the waveforms 
+  for(int i = 0; i < in.bufferSize() - 2; i+=2){
     line(i, 50 + in.left.get(i)*50, i+2, 50 + in.left.get(i+2)*50);
     
     line(i, 150 + in.right.get(i)*50, i+2, 150 + in.right.get(i+2)*50);
-  }
-  
+  }  
    if (record == true) {
     endRaw();
     record = false; // Stop recording to the file
-  } 
-  
+  }   
 }
 
 void keyPressed() {
@@ -89,7 +84,6 @@ void stop()
 {
   // always close Minim audio classes when you are done with them
   in.close();
-  minim.stop();
-  
+  minim.stop();  
   super.stop();
 }

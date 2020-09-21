@@ -1,11 +1,11 @@
 /** 
-DDF 2019
-Let the sketch evolve till you're happy with it. Then press R to export DXF
-Pentigree L-System 
-by Geraldine Sarmiento (NYU ITP). 
-This code was based on Patrick Dwyer's L-System class. 
+ DDF 2020
+ Let the sketch evolve till you're happy with it. Then press R to export DXF
+ Pentigree L-System 
+ by Geraldine Sarmiento (NYU ITP). 
+ This code was based on Patrick Dwyer's L-System class. 
  */
- import processing.dxf.*;
+import processing.dxf.*;
 boolean record = false;
 
 PentigreeLSystem ps;
@@ -19,11 +19,11 @@ void setup() {
 
 void draw() {
   background(0);
-   if (record == true) {
+  if (record == true) {
     beginRaw(DXF, "output.dxf"); // Start recording to the file
   }
   ps.render();
-  
+
   if (record == true) {
     endRaw();
     record = false; // Stop recording to the file

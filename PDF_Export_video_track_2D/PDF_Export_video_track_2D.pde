@@ -1,4 +1,4 @@
-/*DDF 2019
+/*DDF 2020
  click the mouse to select a color to track, when you are ready , press R to export DXF
  */
 
@@ -15,7 +15,8 @@ float snakeY[] =new float[snakeLength];
 
 void setup() {
   size(640, 480);  // DXF seems to want the P3D mode
-  video = new Capture(this, width, height, 30);
+  String[] cameras = Capture.list();
+  video= new Capture(this, width, height, cameras[0]);                     // new OSX requires that you specify the camera
   fill(targetR, targetG, targetB); 
   strokeWeight(5);
   smooth();
@@ -35,7 +36,7 @@ void draw() {
       for (int x = 0; x < video.width; x++) {                                                                              // Get the color stored in the pixel
         color pixelValue = video.pixels[index];
         float distance = dist( targetR, targetG, targetB, red(pixelValue), green(pixelValue), blue(pixelValue));
-                                                                                                                              // If that value is close enough to what we're looking for, then add the X and Y to the average                                                                                                        // brightness of that pixel, as well as its (x,y) location
+        // If that value is close enough to what we're looking for, then add the X and Y to the average                                                                                                        // brightness of that pixel, as well as its (x,y) location
         if (distance < 20) {
           closestY += y;
           closestX += x;

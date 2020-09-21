@@ -1,5 +1,5 @@
 /*
-DDF 2019
+DDF 2020
  pose to the camera and press R to export DXF
  */
 
@@ -16,7 +16,8 @@ boolean record = false;
 
 void setup() {
   size(640, 480, P3D);                                                   // DXF likes P3D
-  video = new Capture(this, width, height);
+  String[] cameras = Capture.list();
+  video= new Capture(this, width, height, cameras[0]);                     // new OSX requires that you specify the camera
   video.start();
 }
 
@@ -33,7 +34,7 @@ void draw() {
     for (int x = 0; x < width; x+= cellSize) {                                // loop through pixels jumping "cellSize" on x and y
       for (int y = 0; y < height; y+=cellSize) { 
         color c= video.get(x, y );                                             // get pixel color for each x, y
-        float CircleSize= map(brightness(c), 0,255,  cellSize-1, 0);           // get the brightness and then map to 0 - cellSize
+        float CircleSize= map(brightness(c), 0, 255, cellSize-1, 0);           // get the brightness and then map to 0 - cellSize
         ellipse(x + cellSize/2, y + cellSize/2, CircleSize, CircleSize);       // draw a circle with size porportional to brightness
       }
     }
